@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Latitude Wine Cellar</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"
+</head>
+<body>
+	<div class="container" style="margin-top:10px;">
+		<div class="navbar">
+			<div class="navbar-inner">
+				<a class="brand" href="/">Latitude Wine Cellar</a>
+				<ul class="nav">
+					<li><a href="/">Summary</a></li>
+					<li class="active"><a href="/locations">Add Locations</a></li>
+					<li><a href="/suppliers">Add Suppliers</a></li>
+					<li><a href="/wines">Add Wines</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span12">
+				<form action="/createLocation" method="POST">
+					<label>Site Name:</label>
+					<input type="text" name="siteName" placeholder="Site Name"/>
+					<label>Site Address:</label>
+					<input type="text" name="siteAddress" placeholder="Site Address"/>
+					<label>Site Phone Number:</label>
+					<input type="text" name="sitePhone" placeholder="Site Phone Number"/>
+					<label>Manager Name:</label>
+					<input type="text" name="managerName" placeholder="Site Manager Name"/>
+					<label>Manager Phone Number:</label>
+					<input type="text" name="managerContact" placeholder="Site Manager Phone Number"/>
+					<label>Manager Email Address:</label>
+					<input type="text" name="managerEmail" placeholder="Site Manager Email"/>
+					<p>
+						<button type="submit" class="btn">Submit</button>
+					</p>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
