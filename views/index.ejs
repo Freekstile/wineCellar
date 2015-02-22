@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='myApp'>
 <head>
 	<title>Latitude Wine Cellar</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 </head>
 <body>
 	<div class="container" style="margin-top:10px;">
@@ -10,7 +10,7 @@
 			<div class="navbar-inner">
 				<a class="brand" href="/">Latitude Wine Cellar</a>
 				<ul class="nav">
-					<li class="active"><a href="/">Summary</a></li>
+					<li class="active"><a href="/">Home</a></li>
 					<li><a href="/locations">Add Locations</a></li>
 					<li><a href="/suppliers">Add Suppliers</a></li>
 					<li><a href="/wines">Add Wines</a></li>
@@ -18,48 +18,16 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="span12" style="border: 2px solid black">
-				<% locations.forEach(function(location) { %>
-					<div>
-						<p>
-						<%= location.siteName %>,
-						<%= location.siteAddress %>,
-						<%= location.sitePhone %>,
-						<%= location.managerName %>,
-						<%= location.managerContact %>,
-						<%= location.managerEmail %>
-						</p>
-					</div>
-				<% }) %>
-			</div>
-			<div class="span12" style="border: 2px solid black">
-				<% suppliers.forEach(function(supplier) { %>
-					<div>
-						<p>
-						<%= supplier.supName %>,
-						<%= supplier.supAddress %>,
-						<%= supplier.supPhone %>,
-						<%= supplier.supAltPhone %>,
-						<%= supplier.supEmail %>,
-						<%= supplier.supContact %>
-						</p>
-					</div>
-				<% }) %>
-			</div>
-			<div class="span12" style="border: 2px solid black">
-				<% wines.forEach(function(wine) { %>
-					<div>
-						<p>
-						<%= wine.wineName %>,
-						<%= wine.wineProducer %>,
-						<%= wine.wineColour %>,
-						<%= wine.wineType %>,
-						<%= wine.wineCountry %>
-						</p>
-					</div>
-				<% }) %>
+			<div ng-app='myApp' ng-controller='locationCtrl'>
+				<select name="locationSelect">
+					<option disabled selected> -- Select a location -- </option>
+					<option ng-repeat='location in locations' value='{{location.siteName}}'>{{location.siteName}}
+					</option>
+				</select>
 			</div>
 		</div>			
 	</div>
+	<script src="js/angular/angular.js"></script>
+	<script src="js/appAng.js"></script>
 </body>
 </html>
