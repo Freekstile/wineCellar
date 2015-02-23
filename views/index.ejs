@@ -17,17 +17,42 @@
 				</ul>
 			</div>
 		</div>
-		<div class="row">
-			<div ng-app='myApp' ng-controller='locationCtrl'>
-				<select name="locationSelect">
-					<option disabled selected> -- Select a location -- </option>
-					<option ng-repeat='location in locations' value='{{location.siteName}}'>{{location.siteName}}
-					</option>
+		<div class="row" ng-app='myApp' ng-controller='locationCtrl' >
+			<div class="span12">
+
+				<p>Select a location to manage</p>
+				<select ng-model="locationSelection" ng-options="location as location.siteName for location in locations">
 				</select>
+
+			</div>
+			<div ng-app='myApp' ng-controller='wineCtrl' class="span12">
+				<p>Wine list for this Location</p>
+				<table class="table">
+					<colgroup span="7"</colgroup>
+					<tbody>
+						<tr>
+							<td>Name</td>
+							<td>Producer</td>
+							<td>Colour</td>
+							<td>Type</td>
+							<td>Country</td>
+						</tr>
+						<tr ng:repeat='wine in wines'>
+							<td>{{wine.wineName}}</td>
+							<td>{{wine.wineProducer}}</td>
+							<td>{{wine.wineColour}}</td>
+							<td>{{wine.wineType}}</td>
+							<td>{{wine.wineCountry}}</td>
+						</tr>
+					</tbody>
+					</colgroup>
+				</table>
+				<button class="btn btn-primary" ng-click="launch('create')">Add New Wine to {{locationSelection.siteName}}</button>
 			</div>
 		</div>			
 	</div>
-	<script src="js/angular/angular.js"></script>
+	<script src="js/bower_components/angular/angular.js"></script>
 	<script src="js/appAng.js"></script>
+	<script src="js/bower_components/angular-modal-service/dst/angular-modal-service.js"></script>
 </body>
 </html>

@@ -57,6 +57,23 @@ app.get('/suppliers.json', function(request, response) {
 	});
 });
 
+//JSON for wines
+app.get('/wines.json', function(request, response) {
+	myWine.find(function(err, wines) {
+		if (err) {
+			response.send(506, {
+				success:false
+			});
+		}
+		else {
+			response.send({
+				success:true,
+				wines:wines
+			});
+		}
+	});
+});
+
 //Return's location, suppliers and wine info to /
 
 app.get('/', function(request, response) {
@@ -113,7 +130,6 @@ app.get('/locations', function(request, response) {
 })
 
 //create a new location object
-
 app.post('/createLocation', function(request, response) {
 	//Create and save a location model
 	var location = new myLocation({
@@ -141,7 +157,6 @@ app.post('/createLocation', function(request, response) {
 app.get('/suppliers', function(request, response) {
 	response.render('suppliers', {});
 })
-
 
 //create a new supplier object
 app.post('/createSupplier', function(request, response) {

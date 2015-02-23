@@ -13,6 +13,18 @@ myApp.controller('locationCtrl',
 			$scope.locations = data.locations;
 		})
 		.error(function(data, status, headers, config) {
-			$scope.errorMessage = "Couldn't load the list of customers, error # " + status;
+			$scope.errorMessage = "Couldn't load the list of locations, error # " + status;
 		});
-});
+	});
+
+myApp.controller('wineCtrl',
+	function wineCtrl($scope,$http){
+		$scope.wines = null;
+		$http.get('http://localhost:3000/wines.json')
+		.success(function(data) {
+			$scope.wines = data.wines;
+		})
+		.error(function(data, status, headers, config) {
+			$scope.errorMessage = "Couldn't load the list of wines, error # " + status;
+		});
+	});
